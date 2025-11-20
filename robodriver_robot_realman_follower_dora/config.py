@@ -32,14 +32,23 @@ class RealManFollowerDoraRobotConfig(RobotConfig):
  
     motors: Dict[str, Motor] = field(
         default_factory=lambda norm_mode_body=norm_mode_body: {
-            "joint_1": Motor(1, "realman", norm_mode_body),
-            "joint_2": Motor(2, "realman", norm_mode_body),
-            "joint_3": Motor(3, "realman", norm_mode_body),
-            "joint_4": Motor(4, "realman", norm_mode_body),
-            "joint_5": Motor(5, "realman", norm_mode_body),
-            "joint_6": Motor(6, "realman", norm_mode_body),
-            "joint_7": Motor(7, "realman", norm_mode_body),
-            "gripper": Motor(8, "realman", MotorNormMode.RANGE_0_100),# 范围需要修改
+            "left_joint_1": Motor(1, "realman", norm_mode_body),
+            "left_joint_2": Motor(2, "realman", norm_mode_body),
+            "left_joint_3": Motor(3, "realman", norm_mode_body),
+            "left_joint_4": Motor(4, "realman", norm_mode_body),
+            "left_joint_5": Motor(5, "realman", norm_mode_body),
+            "left_joint_6": Motor(6, "realman", norm_mode_body),
+            "left_joint_7": Motor(7, "realman", norm_mode_body),
+            "left_gripper": Motor(8, "realman", MotorNormMode.RANGE_0_100),# 范围需要修改
+
+            "right_joint_1": Motor(9, "realman", norm_mode_body),
+            "right_joint_2": Motor(10, "realman", norm_mode_body),
+            "right_joint_3": Motor(11, "realman", norm_mode_body),
+            "right_joint_4": Motor(12, "realman", norm_mode_body),
+            "right_joint_5": Motor(13, "realman", norm_mode_body),
+            "right_joint_6": Motor(14, "realman", norm_mode_body),
+            "right_joint_7": Motor(15, "realman", norm_mode_body),
+            "right_gripper": Motor(16, "realman", MotorNormMode.RANGE_0_100),# 范围需要修改
 
         }
     )
@@ -93,4 +102,4 @@ class RealManFollowerDoraRobotConfig(RobotConfig):
         }
     )
     
-    super().__post_init__()
+    # super().__post_init__()
