@@ -340,7 +340,7 @@ class RealManFollowerDoraRobot(Robot):
             action_dict[f"{name}"] = value
 
         for name in self.cameras:
-            obs_dict[f"observation.images.{name}"] = images[name]
+            obs_dict[f"{name}"] = images[name]
             
         # print("end teleoperate record")
         return obs_dict, action_dict
