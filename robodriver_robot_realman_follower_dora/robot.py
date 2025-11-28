@@ -328,7 +328,7 @@ class RealManFollowerDoraRobot(Robot):
         for name in self.cameras:
             now = time.perf_counter()
             images[name] = self.robot_dora_node.recv_images[name]
-            images[name] = torch.from_numpy(images[name])
+            # images[name] = torch.from_numpy(images[name])
             self.logs[f"read_camera_{name}_dt_s"] = time.perf_counter() - now
 
 
