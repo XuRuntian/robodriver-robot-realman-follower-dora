@@ -15,7 +15,7 @@ source .venv/bin/activate
 ```
 Install dependencies
 ```
-uv pip install -e .
+uv pip install -e .[hardware]
 ```
 Install the project to Robodriver
 ```
@@ -23,6 +23,7 @@ cd /path/to/your/RoboDriver
 source .venv/bin/activate
 cd /path/to/your/robodriver-robot-realman-follower-dora
 uv pip install -e .
+source .venv/bin/activate
 ```
 Configure the dataflow.yml
 ```
@@ -57,5 +58,5 @@ Launch RoboXStudio
 cd /path/to/your/RoboDriver
 source .venv/bin/activate
 python robodriver/scripts/run.py \
-  --robot.type=realman_follower_dora \
+  --robot.type=realman_follower_dora 
 ```
