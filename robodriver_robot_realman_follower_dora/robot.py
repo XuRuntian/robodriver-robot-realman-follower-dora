@@ -344,7 +344,43 @@ class RealManFollowerDoraRobot(Robot):
             
         # print("end teleoperate record")
         return obs_dict, action_dict
+    def get_action(self) -> dict[str, Any]:
+        if not self.connected:
+            raise DeviceNotConnectedError(
+                "RealMan is not connected. You need to run `robot.connect()`."
+            )
+        
+        for key in self.robot_dora_node.recv_images_status:
+            self.robot_dora_node.recv_images_status[key] = max(0, self.robot_dora_node.recv_images_status[key] - 1)
+            
+        for key in self.robot_dora_node.recv_joint_status:
+            self.robot_dora_node.recv_joint_status[key] = max(0, self.robot_dora_node.recv_joint_status[key] - 1)
+
     
+        follower_joint = {}
+        for name in self.follower_arms:
+            for match_name in self.robot_dora_node.recv_joint:
+                if name in match_name:
+                    now = time.perf_counter()
+                    byte_array = np.zeros(14, dtype=np.float32)
+                    pose_read = self.robot_dora_node.recv_joint[match_name]
+
+                    byte_array[:14] = pose_read[:]
+                    byte_array = np.round(byte_array, 3)
+                    
+                    follower_joint[name] = torch.from_numpy(byte_array)
+
+                    self.logs[f"read_follower_{name}_joint_dt_s"] = time.perf_counter() - now
+
+        action_dict = {}
+        action = []
+        for name in self.follower_arms:
+            if name in follower_joint:
+                action.append(follower_joint[name])
+        action = torch.cat(action)
+        for name, value in zip(self._motors_ft.keys(), action):
+            action_dict[f"{name}"] = value
+        return action_dict
     def get_observation(self) -> dict[str, Any]:
         if not self.connected:
             raise DeviceNotConnectedError(f"{self} is not connected.")
