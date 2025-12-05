@@ -75,4 +75,4 @@ RealMan robotic arm data is transmitted by the Dora node. Each robotic arm node 
 - Joint angles: Values of joints 1-7 (7 dimensions)
 - Gripper state: Gripper opening/closing degree 
 - End-effector pose: End Euler angles (3 dimensions, representing rotation around X/Y/Z axes) \
-**When you need to modify the data information, you can modify dataflow.yml and configs.py**
+**When you need to modify the data information, you can modify dataflow.yml and config.py**
