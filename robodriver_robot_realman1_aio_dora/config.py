@@ -76,12 +76,12 @@ class RealManFollowerDoraRobotConfig(RobotConfig):
                 width=640,
                 height=480,
             ),
-            # "image_top_depth": OpenCVCameraConfig(
-            #     index_or_path=2,
-            #     fps=30,
-            #     width=640,
-            #     height=480,
-            # ),
+            "image_top_depth": OpenCVCameraConfig(
+                index_or_path=2,
+                fps=30,
+                width=640,
+                height=480,
+            ),
             "image_left_wrist": OpenCVCameraConfig(
                 index_or_path=3,
                 fps=30,
@@ -89,24 +89,24 @@ class RealManFollowerDoraRobotConfig(RobotConfig):
                 height=480,
             ),
             
-            # "image_left_wrist_depth": OpenCVCameraConfig(
-            #     index_or_path=4,
-            #     fps=30,
-            #     width=640,
-            #     height=480,
-            # ),
+            "image_left_wrist_depth": OpenCVCameraConfig(
+                index_or_path=4,
+                fps=30,
+                width=640,
+                height=480,
+            ),
             "image_right_wrist": OpenCVCameraConfig(
                 index_or_path=5,
                 fps=30,
                 width=640,
                 height=480,
             ),
-            # "image_right_wrist_depth": OpenCVCameraConfig(
-            #     index_or_path=6,
-            #     fps=30,
-            #     width=640,
-            #     height=480,
-            # ),
+            "image_right_wrist_depth": OpenCVCameraConfig(
+                index_or_path=6,
+                fps=30,
+                width=640,
+                height=480,
+            ),
         }
     )
 

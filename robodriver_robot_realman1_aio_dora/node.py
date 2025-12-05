@@ -120,6 +120,9 @@ class RealManFollowerDoraRobotNode(DoraRobotNode):
                 frame = data.reshape((height, width, 3))
             elif encoding in ["jpeg", "jpg", "jpe", "bmp", "webp", "png"]:
                 frame = cv2.imdecode(data, cv2.IMREAD_COLOR)
+            elif encoding == "mono16":
+                frame_2d = data.reshape(height, width)
+                frame = frame_2d[:, :, np.newaxis].repeat(3, axis=-1) # 需要3维不然报错
         except Exception as e:
             logger.error(f"Image decode error ({encoding}): {str(e)}")
 
